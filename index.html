@@ -1,15 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log Viewer Page</title>
-  </head>
-  <body>
-    <script type="module" src="./html/logViewerPage.js"></script>
-    hello world
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitRows Example</title>
+</head>
+<body>
+
+<!-- Include GitRows script from unpkg.com -->
+<script src="https://unpkg.com/gitrows@latest/dist/gitrows.min.js"></script>
+
+<script>
+  // Your JavaScript code
+  // Init the GitRows client, you can provide options at this point, later, or just run on the defaults
+  const gitrows = new Gitrows();
+
+  let path = '@github/gitrows/data/iris.json';
+
+  gitrows.get(path)
+    .then((data) => {
+      // handle (Array/Object)data
+      console.log(data);
+    })
+    .catch((error) => {
+      // handle error, which has the format (Object){code:http_status_code,description='http_status_description'}
+      console.error(error);
+    });
+</script>
+
+</body>
 </html>
-
-
